@@ -71,7 +71,7 @@ class BankingUI:
         with st.sidebar:
             st.header("⚙️ Settings")
             uploaded_file = st.file_uploader(
-                "Upload transaction data (CSV)", type="csv"
+                "Upload transaction data (CSV)/ API integration", type="csv"
             )
             self.recommender.load_data(uploaded_file)
 
