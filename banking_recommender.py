@@ -59,7 +59,16 @@ BANKING_PRODUCTS = [
 
 
 class BankingRecommendationSystem:
-    def __init__(self):
+    def __init__(self, openai_api_key=None):
+        if openai_api_key is None:
+            # Try environment variable first, then Streamlit secrets
+            openai_api_key = os.environ.get("OPENAI_API_KEY")
+            if (
+                not openai_api_key
+                and hasattr(st, "secrets")
+                and "OPENAI_API_KEY" in st.secrets
+            ):
+                openai_api_key = st.secrets["OPENAI_API_KEY"]
         self.transaction_data = None
         self.customer_product_matrix = None
         self.openai_client = None
