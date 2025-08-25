@@ -68,4 +68,4 @@ jobs:
         with:
           app-name: 'sbr-recommendation'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_76DAB424C35246AFBE6DD0C954AE4888 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_77EDD4B0486B40A9A3AA0AE4867ED621 }}

@@ -1,23 +1,21 @@
-import streamlit as st
 import pandas as pd
 import time
-
-import os
 from banking_recommender import BankingRecommendationSystem
+
+import streamlit as st
+
+# Set up Streamlit page configuration
+st.set_page_config(
+    page_title="BankAI Recommendations",
+    page_icon="🏦",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
 
 
 class BankingUI:
     def __init__(self, recommender):
         self.recommender = recommender
-        self._setup_ui()
-
-    def _setup_ui(self):
-        st.set_page_config(
-            page_title="BankAI Recommendations",
-            page_icon="🏦",
-            layout="wide",
-            initial_sidebar_state="expanded",
-        )
 
     def _customer_profile_card(self, customer_data):
         """Display customer profile with formatted datetime"""
@@ -73,7 +71,7 @@ class BankingUI:
         with st.sidebar:
             st.header("⚙️ Settings")
             uploaded_file = st.file_uploader(
-                "Upload transaction data (CSV)", type="csv"
+                "Upload transaction data (CSV)/ API integration", type="csv"
             )
             self.recommender.load_data(uploaded_file)
 
@@ -174,9 +172,8 @@ class BankingUI:
 
 
 if __name__ == "__main__":
-    # Set API key directly here (consider using environment variables in production)
-    recommender = BankingRecommendationSystem(
-        openai_api_key=os.environ.get("OPENAI_API_KEY") # for local dev using - openai_api = st.secrets["secrets"]["OPENAI_API_KEY"]
-    )
+    # Use the get_azure_openai_client method for consistent Azure OpenAI client initialization
+    recommender = BankingRecommendationSystem()
+    recommender.openai_client = recommender.get_azure_openai_client()
     ui = BankingUI(recommender)
     ui.show_main_interface()
