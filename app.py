@@ -82,6 +82,15 @@ class BankingUI:
                 10,
                 help="Select how many customer recommendations to generate",
             )
+            #st.subheader("Anti money laundering (AML Api integration)")
+            #st.subheader("KYC (API integration)")
+            
+            st.markdown("""
+            - 🛡️ * Anti Money Laundering (AML API Integration)
+            - 👤 * KYC (API Integration)
+            """)
+
+
 
         st.title("🏦 Smart Banking Recommendations")
         st.caption(
