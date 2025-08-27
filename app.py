@@ -86,8 +86,8 @@ class BankingUI:
             #st.subheader("KYC (API integration)")
             
             st.markdown("""
-            - 🛡️ * Anti Money Laundering (AML API Integration)
-            - 👤 * KYC (API Integration)
+            - 🛡️ Anti Money Laundering (AML API Integration)
+            - 👤 KYC (API Integration)
             """)
 
 
